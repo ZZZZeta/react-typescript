@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import withTemplate from '../../../hocs/withTemplate';
 import { Route, RouteProps } from 'react-router';
 
-const MyRoute = ({ component, ...rest }: RouteProps) => {
-  const Component = withTemplate(
-    component as React.ComponentClass<{}> | React.FunctionComponent<{}>
-  );
+interface MyRouteInterface extends RouteProps {
+  component: ComponentType;
+}
+
+const MyRoute = ({ component, ...rest }: MyRouteInterface) => {
+  const Component = withTemplate(component);
 
   return <Route {...rest} component={Component} />;
 };

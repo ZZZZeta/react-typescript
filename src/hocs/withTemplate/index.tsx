@@ -1,8 +1,8 @@
-import React, { ComponentProps, ComponentType } from 'react';
+import React, { ComponentType } from 'react';
 import Template from '../../components/Base/Template';
 
-const withTemplate = (WrappedComponent: ComponentType) => (
-  props: ComponentProps<any>
+const withTemplate = <T extends {}>(WrappedComponent: ComponentType<T>) => (
+  props: T
 ) => {
   return (
     <Template>
