@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { isLoading as isLoadingSelector } from '../../../redux/preloader/selectors';
 
 const Preloader: FC = ({ children }) => {
-    const isLoading = useSelector(isLoadingSelector);
+  const isLoading = useSelector(isLoadingSelector);
 
-    return (
-        <Spin tip="Loading..." spinning={isLoading}>
-            {children}
-        </Spin>
-    );
+  return (
+    <Spin tip="Loading..." spinning={isLoading}>
+      {children}
+    </Spin>
+  );
 };
 
 export default Preloader;

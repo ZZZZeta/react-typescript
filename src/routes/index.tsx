@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import {BrowserRouter, Switch} from 'react-router-dom';
-import MyRoute from '../components/Logic/MyRoute';
-
+import {Route} from 'react-router-dom'
 const Home = lazy(() => import('../pages/Home'));
 const Posts = lazy(() => import('../pages/Posts'));
 
@@ -9,8 +8,8 @@ const Router = () => (
     <BrowserRouter>
         <Suspense fallback="Loading">
             <Switch>
-                <MyRoute exact path="/" component={Home} />
-                <MyRoute exact path="/posts" component={Posts} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/posts" component={Posts} />
             </Switch>
         </Suspense>
     </BrowserRouter>
