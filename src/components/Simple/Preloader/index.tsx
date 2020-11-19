@@ -6,6 +6,8 @@ import { isLoading as isLoadingSelector } from '../../../redux/preloader/selecto
 const Preloader: FC = ({ children }) => {
   const isLoading = useSelector(isLoadingSelector);
 
+  console.log(isLoading);
+
   return (
     <Spin tip="Loading..." spinning={isLoading}>
       {children}

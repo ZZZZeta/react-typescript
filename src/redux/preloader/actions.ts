@@ -1,5 +1,15 @@
 import * as types from './constants';
+import { BaseAction } from '../baseTypes';
 
-export const enableLoading = () => ({ type: types.ENABLE_LOADING });
+interface EnableLoadingAction extends BaseAction {}
+interface DisableLoadingAction extends BaseAction {}
 
-export const disableLoading = () => ({ type: types.DISABLE_LOADING });
+export type PreloaderActionTypes = EnableLoadingAction | DisableLoadingAction;
+
+export const enableLoading = (): EnableLoadingAction => ({
+  type: types.ENABLE_LOADING,
+});
+
+export const disableLoading = (): DisableLoadingAction => ({
+  type: types.DISABLE_LOADING,
+});

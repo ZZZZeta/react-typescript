@@ -1,9 +1,4 @@
 import REDUCER from './constants';
-
-interface RootState  {
-    [REDUCER]: {
-        posts: {}
-    }
-};
+import { RootState } from '../rootReducer';
 
 export const postsSelector = (state: RootState) => state[REDUCER].posts;

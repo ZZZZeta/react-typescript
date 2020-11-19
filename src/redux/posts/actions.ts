@@ -1,17 +1,16 @@
 import * as types from './constants';
-import { apiGetPosts } from "../../api/posts";
-import {AxiosPromise} from "axios";
+import { apiGetPosts } from '../../api/posts';
+import { BaseAction } from "../baseTypes";
 
-interface getPostsAction {
-  types: Array<string>,
-  promise: AxiosPromise
-};
+interface getPostsAction extends BaseAction {}
 
-export const getPosts = () => ({
-   types: [
-       types.GET_POSTS_REQUEST,
-       types.GET_POSTS_SUCCESS,
-       types.GET_POSTS_FAILURE,
-   ],
-   promise: () => apiGetPosts()
+export type PostsActionTypes = getPostsAction;
+
+export const getPosts = (): getPostsAction => ({
+  types: [
+    types.GET_POSTS_REQUEST,
+    types.GET_POSTS_SUCCESS,
+    types.GET_POSTS_FAILURE,
+  ],
+  promise: () => apiGetPosts(),
 });

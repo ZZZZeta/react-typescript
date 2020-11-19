@@ -1,9 +1,4 @@
 import REDUCER from './constants';
-
-interface RootState {
-    [REDUCER]: {
-        isLoading: boolean
-    }
-}
+import { RootState } from '../rootReducer';
 
 export const isLoading = (state: RootState) => state[REDUCER].isLoading;

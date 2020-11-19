@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
-import preloader from './preloader/reducer'
+import preloader from './preloader/reducer';
+import posts from './posts/reducer';
 
 const rootReducer = combineReducers({
-    preloader
+  preloader,
+  posts,
 });
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;
