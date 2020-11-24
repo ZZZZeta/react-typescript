@@ -1,7 +1,9 @@
 import { spawn } from 'redux-saga/effects';
 
+import getPosts from './posts/sagas/getPostsSaga';
+
 function* rootSaga() {
-    yield spawn(() => console.log('Run root saga'));
+  yield spawn(getPosts);
 }
 
 export default rootSaga;

@@ -1,4 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from '../../redux/posts/actions';
+import { postsSelector } from '../../redux/posts/selectors';
 
 // components
 import Table from '../../components/Simple/Table';
@@ -10,7 +13,12 @@ import useFetch from '../../hooks/useFetch';
 import { Post } from '../../redux/posts/types';
 
 const Posts: FC = () => {
-  const posts: Post[] = useFetch('https://jsonplaceholder.typicode.com/posts');
+  const dispatch = useDispatch();
+  const posts = useSelector(postsSelector);
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   const columns = [
     {
@@ -29,7 +37,7 @@ const Posts: FC = () => {
     <Table<Post>
       dataSource={posts}
       columns={columns}
-      rowKey={(item: Post) => item?.id}
+      rowKey={(item: Post) => item.id}
     />
   );
 };
