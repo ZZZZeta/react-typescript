@@ -13,7 +13,7 @@ const Template: FC = ({ children }) => {
       <Header>
         <Navbar menuItems={menuItems} />
       </Header>
-      <Content>{children}</Content>
+      <Content style={{ minHeight: 'calc(100vh - 64px)' }}>{children}</Content>
     </>
   );
 };

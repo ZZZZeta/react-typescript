@@ -6,9 +6,6 @@ import { postsSelector } from '../../redux/posts/selectors';
 // components
 import Table from '../../components/Simple/Table';
 
-// utils
-import useFetch from '../../hooks/useFetch';
-
 // types
 import { Post } from '../../redux/posts/types';
 
