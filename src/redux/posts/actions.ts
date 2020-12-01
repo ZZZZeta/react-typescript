@@ -1,6 +1,6 @@
 import * as types from './constants';
-import { apiGetPosts } from '../../api/posts';
-import { BaseAction } from "../baseTypes";
+import { apiGetPostsCached } from '../../api/posts';
+import { BaseAction } from '../baseTypes';
 
 interface getPostsAction extends BaseAction {}
 
@@ -12,5 +12,5 @@ export const getPosts = (): getPostsAction => ({
     types.GET_POSTS_SUCCESS,
     types.GET_POSTS_FAILURE,
   ],
-  promise: () => apiGetPosts(),
+  promise: () => apiGetPostsCached(),
 });

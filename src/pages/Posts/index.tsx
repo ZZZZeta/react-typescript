@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from '../../redux/posts/actions';
+import * as actions from '../../redux/posts/actions';
 import { postsSelector } from '../../redux/posts/selectors';
 
 // components
@@ -14,7 +14,7 @@ const Posts: FC = () => {
   const posts = useSelector(postsSelector);
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(actions.getPosts());
   }, [dispatch]);
 
   const columns = [
