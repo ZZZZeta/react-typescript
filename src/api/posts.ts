@@ -3,7 +3,7 @@ import cacheApiCall from '../utils/api/cacheApiCall';
 
 export const apiGetPosts = () =>
   makeApiCall({
-    url: 'https://jsonplaceholder.typicode.com/posts',
+    url: 'api/posts',
     method: 'GET',
   });
 

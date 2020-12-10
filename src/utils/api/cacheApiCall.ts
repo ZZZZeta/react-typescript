@@ -3,13 +3,13 @@ type Cache = () => {
   getData: (key: string) => any;
 };
 
-const cache: Cache = () => {
-  const storage = localStorage;
-  const LIFETIME = 5000;
-  const getTimestamp = () => new Date().getTime();
-  const validate = (_timestamp: number) =>
-    getTimestamp() - _timestamp < LIFETIME;
+const storage = localStorage;
+const LIFETIME: number = 5000;
+const getTimestamp = (): number => new Date().getTime();
+const validate = (_timestamp: number): boolean =>
+  getTimestamp() - _timestamp < LIFETIME;
 
+const cache: Cache = () => {
   const getData = (key: string) => {
     try {
       const jsonData: string | null = storage.getItem(key);

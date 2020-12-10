@@ -1,10 +1,13 @@
-import { enableLoading, disableLoading } from '../../redux/preloader/actions';
+import * as actions from '../../redux/preloader/actions';
 import { useDispatch } from 'react-redux';
 
 const usePreloader = () => {
   const dispatch = useDispatch();
 
-  return [() => dispatch(enableLoading()), () => dispatch(disableLoading())];
+  return [
+    () => dispatch(actions.enableLoading()),
+    () => dispatch(actions.disableLoading()),
+  ];
 };
 
 export default usePreloader;
