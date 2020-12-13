@@ -1,38 +1,59 @@
-import React, { FC, useState } from 'react';
-import { v4 as uuid } from 'uuid';
-
-// utils
-import { makeGrid, dfs } from './utils/graph';
+import React, { FC } from 'react';
+import { Form } from 'react-final-form';
+import { Row, Col, Button } from 'antd';
+import Field, { components } from '../../components/Form';
 
 const Home: FC = () => {
-  const [grid, setGrid] = useState(makeGrid(10));
-
   return (
-    <>
-      <div>Click on RED squares</div>
-      {grid.map((row, i) => (
-        <div key={uuid()}>
-          {row.map((value, j) => (
-            <div
-              key={uuid()}
-              style={{
-                display: 'inline-block',
-                width: '25px',
-                height: '25px',
-                margin: '5px',
-                border: '1px solid lightgray',
-                background: value ? 'red' : 'green',
-              }}
-              onClick={() => {
-                if (value === 1) {
-                  setGrid(dfs(grid, i, j));
-                }
-              }}
-            />
-          ))}
-        </div>
-      ))}
-    </>
+    <Form
+      onSubmit={(values) => console.log(values)}
+      render={(formProps) => {
+        const { handleSubmit } = formProps;
+
+        return (
+          <Row align="middle" style={{ height: '100%' }}>
+            <Col span={8} offset={8}>
+              <form onSubmit={handleSubmit}>
+                <Row justify="center">
+                  <Col span={20} offset={2} style={{ paddingTop: '16px' }}>
+                    <Field
+                      name="email"
+                      component={components.input}
+                      placeholder="Email"
+                      validate={(value) => {
+                        if (!value) return 'This field is required';
+                      }}
+                    />
+                  </Col>
+                  <Col span={20} offset={2} style={{ paddingTop: '16px' }}>
+                    <Field
+                      name="password"
+                      component={components.input}
+                      placeholder="Password"
+                      validate={(value) => {
+                        if (!value) return 'This field is required';
+                        if (value.toString().length < 8)
+                          return 'Password must contain at least 8 characters';
+                      }}
+                    />
+                  </Col>
+                  <Col
+                    span={20}
+                    offset={2}
+                    style={{ paddingTop: '16px' }}
+                    flex="flex"
+                  >
+                    <Button type="primary" htmlType="submit">
+                      Log in
+                    </Button>
+                  </Col>
+                </Row>
+              </form>
+            </Col>
+          </Row>
+        );
+      }}
+    />
   );
 };
 
