@@ -2,11 +2,17 @@ import React, { FC } from 'react';
 import { Form } from 'react-final-form';
 import { Row, Col, Button } from 'antd';
 import Field, { components } from '../../components/Form';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/auth/actions';
 
 const Home: FC = () => {
+  const dispatch = useDispatch();
+
   return (
     <Form
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) =>
+        dispatch(login({ email: values.email, password: values.password }))
+      }
       render={(formProps) => {
         const { handleSubmit } = formProps;
 
@@ -28,7 +34,7 @@ const Home: FC = () => {
                   <Col span={20} offset={2} style={{ paddingTop: '16px' }}>
                     <Field
                       name="password"
-                      component={components.input}
+                      component={components.password}
                       placeholder="Password"
                       validate={(value) => {
                         if (!value) return 'This field is required';

@@ -2,18 +2,18 @@ import React from 'react';
 import { Table } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
-interface ITable<Item> {
-  dataSource: Array<Item>;
+type TableProps<Item> = {
+  dataSource: Item[];
   columns: ColumnProps<Item>[];
   rowKey: (item: Item) => number;
-}
+};
 
-const TableWrapped = <Item extends {}>({
+function TableWrapped<Item extends {}>({
   dataSource,
   columns,
   ...rest
-}: ITable<Item>) => {
-  return <Table<Item> {...rest} dataSource={dataSource} columns={columns} />;
-};
+}: TableProps<Item>) {
+  return <Table {...rest} dataSource={dataSource} columns={columns} />;
+}
 
 export default TableWrapped;
