@@ -17,3 +17,7 @@ export const login = (data: {
   ],
   promise: () => apiLogin(data),
 });
+
+export const logout = () => ({
+  type: types.LOGOUT_USER,
+});

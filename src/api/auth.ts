@@ -11,5 +11,11 @@ export const apiLogin = (data: unknown) =>
   makeApiCall({
     url: 'api/auth/login',
     method: 'POST',
-    data
+    data,
+  });
+
+export const apiGetCurrentUser = () =>
+  makeApiCall({
+    url: 'api/user/me',
+    method: 'GET',
   });

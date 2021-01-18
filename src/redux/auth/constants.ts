@@ -8,4 +8,6 @@ export const LOGIN_USER_REQUEST = `${name}/LOGIN_USER_REQUEST`;
 export const LOGIN_USER_SUCCESS = `${name}/LOGIN_USER_SUCCESS`;
 export const LOGIN_USER_FAILURE = `${name}/LOGIN_USER_FAILURE`;
 
+export const LOGOUT_USER = `${name}/LOGOUT_USER`;
+
 export default name;
